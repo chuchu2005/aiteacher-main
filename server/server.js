@@ -473,14 +473,7 @@ app.post("/api/transcript", async (req, res) => {
 app.post("/api/course", async (req, res) => {
   const { user, content, type, mainTopic } = req.body;
 
-  unsplash.search
-    .getPhotos({
-      query: mainTopic,
-      page: 1,
-      perPage: 1,
-      orientation: "landscape",
-    })
-    .then(async (result) => {
+  then(async (result) => {
       const photos = result.response.results;
       const photo = photos[0].urls.regular;
       try {
@@ -505,16 +498,7 @@ app.post("/api/update", async (req, res) => {
   try {
     await Course.findOneAndUpdate({ _id: courseId }, [
       { $set: { content: content } },
-    ])
-      .then((result) => {
-        res.json({ success: true, message: "Course updated successfully" });
-      })
-      .catch((error) => {
-        res
-          .status(500)
-          .json({ success: false, message: "Internal server error" });
-      });
-  } catch (error) {
+   
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 });
@@ -526,14 +510,7 @@ app.post("/api/finish", async (req, res) => {
       { _id: courseId },
       { $set: { completed: true, end: Date.now() } }
     )
-      .then((result) => {
-        res.json({ success: true, message: "Course completed successfully" });
-      })
-      .catch((error) => {
-        res
-          .status(500)
-          .json({ success: false, message: "Internal server error" });
-      });
+      
   } catch (error) {
     res.status(500).json({ success: false, message: "Internal server error" });
   }
@@ -573,10 +550,7 @@ app.post("/api/sendcertificate", async (req, res) => {
 //GET ALL COURSES
 app.get("/api/courses", async (req, res) => {
   try {
-    const { userId } = req.query;
-    await Course.find({ user: userId }).then((result) => {
-      res.json(result);
-    });
+    
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }
@@ -594,11 +568,7 @@ app.post("/api/profile", async (req, res) => {
         .then((result) => {
           res.json({ success: true, message: "Profile Updated" });
         })
-        .catch((error) => {
-          res
-            .status(500)
-            .json({ success: false, message: "Internal server error" });
-        });
+        
     } else {
       await User.findOneAndUpdate(
         { _id: uid },
