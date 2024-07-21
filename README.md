@@ -1,7 +1,5 @@
 # AITeacher Main A2SV
 
-AITeacher Main A2SV is a project designed to leverage artificial intelligence for educational purposes, specifically tailored towards the A2SV (Algorithm and Data Structure Visualization) platform. This project aims to enhance learning experiences by providing interactive and intelligent tools for visualizing complex algorithms and data structures.
-
 
 
 ## Getting Started
